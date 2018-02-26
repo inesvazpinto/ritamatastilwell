@@ -7,16 +7,6 @@
  	text-decoration: none;
  }
 
-.scene {
-	fill: rgba(255,255,255,0.2);
-	display: flex;
-	flex-flow: collumn nowrap;
-	justify-content: center;
-	align-itens: center; 
-	width:90vw;
-	height: auto;
-}
-
 /*------------------------------------*\
     #LAYOUT
 \*------------------------------------*/
@@ -33,6 +23,20 @@ $primary-color: #fdc209;
 	color: white;
 }
 
+
+/*------------------------------------*\
+    #MORPHO
+\*------------------------------------*/
+.scene {
+	fill: rgba(255,255,255,0.2);
+	height: 90vh;
+	width: auto;
+	margin: 15vh auto;
+	display: block;
+	margin-top: 25vh;
+}
+
+
 /*------------------------------------*\
     #NAVIGATION
 \*------------------------------------*/
@@ -41,8 +45,9 @@ header {
 	width: 100%;
 	z-index:2;
 	position: fixed;
-	background: rgba(252,193,8,.8);
+	background: $primary-color;
 	padding-top:14px;
+	height: auto;
 }
 
 .menu {
@@ -50,21 +55,15 @@ header {
 	top: 0px;
 	padding-bottom: 10px;
 	background-color: rgba(252,193,8,1);
-	//background-color: rgba(254,202,54,1);
 	-webkit-transition: all 0.5s cubic-bezier(0.19, 1, 0.22, 1);
 	transition: all 0.5s cubic-bezier(0.19, 1, 0.22, 1);
+	width: auto;
+
 }
 
 .menu.is--visible {
 	left: 0px;
-}
-
-.menu.is--hidden {
-	left: -100%;
-}
-
-.menu.active {
-  width: 100%;
+	width: 100%;
 }
 
 .menu-opener {
@@ -106,36 +105,41 @@ header {
   transform: translateY(-0.3rem) translateX(0rem) rotate(45deg);
 }
 
-.section-title-mobile {
+.menu-opener.is--visible {
+	display: block;
+}
+
+.menu-opener.is--hidden {
+	display: none;
+}
+
+.section-title {
 	font-size: 3rem;
 	color: white;
 	font-weight: 100;
+	width: auto;
 	color: white;
-	display: inline;
+	margin-top: 0px;
+	margin-bottom: 0px;
 }
 
-.section-title-mobile::before {
+.section-title::before {
 	content: '';
     display: inline-block;
     width: 25px;
-    margin-right: 20px;
+    margin-right: 15px;
     height: 2px;
     margin-bottom: 9px;
     background: white;
     transition: width .3s;
 }
 
-ul {
-	margin-top: 0px;
-	padding: 0px;
+.section-title.is--visible {
+	display: block;
 }
 
-h1 {
-	a {
-		font-size: 3rem;
-		//color: white;
-		font-weight: 100;
-	}
+.section-title.is--hidden {
+	display: none;
 }
 
 .menu-link::before {
@@ -159,10 +163,6 @@ h1 {
 	color: white;
 }
 
-.section-title-desktop {
-	font-size: 1.4rem;
-}
-
 .menu-link:active::before {
     background: white;
 }
@@ -173,6 +173,18 @@ h1 {
 .menu-link.is--active::before {
 	background: white;
 	width: 125px;
+}
+
+ul {
+	margin-top: 0px;
+	padding: 0px;
+}
+
+h1 {
+	a {
+		font-size: 3rem;
+		font-weight: 100;
+	}
 }
 
 nav {
@@ -195,47 +207,33 @@ nav ul li {
 /*------------------------------------*\
     #SECTIONS GENERAL
 \*------------------------------------*/
-article {
-	margin-bottom: 50px;
+.landing {
+	height: 100vh;
+	display: flex;
+	flex-flow: collumn nowrap;
+	align-items: center;
 }
 
-h5 {
-	//display: none;
+article {
+	margin-bottom: 50px;
 }
 
 .margins-sections {
 	margin: 0 20px 120px 20px;
 }
 
-.section-title-desktop {
-	//font-family: $secundary-font;
-	text-transform: uppercase;
-	font-size: 1.4rem;
-	font-weight: 100;
-	letter-spacing: .2rem;
-	//font-style: italic;
-	color: rgba(255,255,255,.6);
-	margin-bottom: 25px;
-}
-
-.section-title-desktop::before {
-	content: '';
-    display: inline-block;
-    width: 25px;
-    margin-right: 10px;
-    height: 2px;
-    margin-bottom: 5px;
-    background: rgba(255,255,255,.6);
+.margins-sections-1 {
+	margin: 0 20px 20px 20px;
 }
 
 h2 {
+	position: absolute;
+	top: 50%;
 	font-size: 2.2rem;
 	font-weight: 100;
 	font-style: italic;
 	color: white;
-	margin-top: 100px;
 }
-
 
 h3 {
 	font-size: 1.7rem;
@@ -243,6 +241,26 @@ h3 {
 	font-style: italic;
 	color: rgba(255,255,255,.6);
 	margin: 25px 0;
+}
+
+h5 {
+	font-family: $secundary-font;
+	font-weight: 300;
+	font-size: 1.3rem;
+	color: white;
+	text-transform: uppercase;
+	letter-spacing: .4rem;
+}
+
+h5::before {
+	content: '';
+    display: inline-block;
+    width: 20px;
+    height: 2px;
+    margin-right: 10px;
+    margin-bottom: 4px;
+    background: white;
+    transition: width .3s;
 }
 
 p {
@@ -276,39 +294,39 @@ p {
     margin-bottom: 5px;
     background: rgba(255,255,255,.7);
     transition: width .3s;
-
 }
 
 .line:hover::before {
     width: 50px;
     margin-right: 8px;
     transition: width .3s;
-
-}
-
-.landing {
-	height: 100vh;
-	display: flex;
-	flex-flow: collumn nowrap;
-	align-items: center;
 }
 
 /*------------------------------------*\
-    #SECTION CONTACTS
+    #CONTACTS SECTION
 \*------------------------------------*/
-address a {
-	color: $primary-color;
-	font-size: 1.4rem;
-	font-style: normal;
-	line-height: 2.5rem;
-}
-
 .contactos {
 	height: 100vh;
 	display: flex;
 	flex-flow: collumn nowrap;
 	justify-content: center;
 	align-itens: center;
+}
+
+#map {
+	height: 100vh;
+	width: 100%;
+	z-index: -9999999;
+}
+
+/*------------------------------------*\
+    #CONTACTS BOX
+\*------------------------------------*/
+address a {
+	color: $primary-color;
+	font-size: 1.4rem;
+	font-style: normal;
+	line-height: 2.5rem;
 }
 
 .social {
@@ -318,16 +336,10 @@ address a {
 	fill: $primary-color;
 }
 
-#map {
-	height: 100vh;
-	width: 100%;
-	z-index: -9999999;
-}
-
 .address-box {
 	background-color: white;
 	padding: 30px;
-	position:absolute;
+	position: absolute;
 	margin-top: 50vh;
 	-webkit-transform: translateY(-25vh);
 	transform: translateY(-25vh);
@@ -342,6 +354,14 @@ address a {
 	display: none;
 }
 
+.close {
+	height: 25px;
+	fill: $primary-color;
+	position: absolute;
+	bottom: 20px;
+	right: 20px;
+}
+
 /*------------------------------------*\
     #FOOTER
 \*------------------------------------*/
@@ -351,7 +371,7 @@ footer {
 	p{
 		font-size: .8rem;
 		margin-left: 45px;
-		text-align: center;
+		text-align: left;
 	}
 }
 
@@ -359,7 +379,9 @@ footer {
     #MEDIA QUERIES
 \*------------------------------------*/
 @media only screen and (max-width:1024px) {
-
+	.menu.is--hidden {
+		left: -100%;
+	}
 }
 
 /* target only screen media where browser width is bigger than 640px */
@@ -383,6 +405,12 @@ footer {
 
 /* target media where browser width is bigger than 1024px */
 @media only screen and (min-width: 64rem) {
+	.scene {
+		width:50vw;
+		height: auto;
+		margin: 15vh auto;
+		display: block;
+	}
 	.menu {
 		width: auto;
 		background: rgba(252,193,8,0);
@@ -391,6 +419,7 @@ footer {
 	.menu-link {
 	//	display: block;
 	}
+
 	.menu-opener,.section-title-mobile {
 		//display: none;
 	}
@@ -398,6 +427,10 @@ footer {
 	.margins-sections {
 		margin-left: 35vw;
 		margin-right: 3vw;
+	}
+
+	.margins-sections-1 {
+		margin: 0 3vw 20px 35vw;
 	}
 
 	nav {
@@ -456,5 +489,4 @@ footer {
 	.social {
 		height: 18px;
 	}
-
 }
