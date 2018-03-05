@@ -84,7 +84,7 @@ window.addEventListener('scroll', function() {
 \*------------------------------------*/
 const scrollToSection = (el) => {
     let {top} = el.getBoundingClientRect();
-    let mainHeaderHeight = document.getElementById('top').scrollHeight;
+    let mainHeaderHeight = document.getElementById('js-main-header').scrollHeight;
   
     const scroll = {
         y: window.pageYOffset
@@ -335,7 +335,7 @@ function initMap(el) {
         map: map,
         title: 'Rita Mata Stilwell',
         icon: {
-            url: "src/images/marker.svg",
+            url: "/images/marker.svg",
             scaledSize: new google.maps.Size(64, 64)
         }  
     });
@@ -351,7 +351,6 @@ function initMap(el) {
     };
 
     marker.addListener('click', function() {
-        console.log('hi');
         toggleBox(box);
     });
 
