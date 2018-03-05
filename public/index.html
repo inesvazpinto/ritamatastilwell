@@ -10,8 +10,9 @@
 		<link rel="stylesheet" href="/styles/app.css">
 		<link href="//fonts.googleapis.com/css?family=Bitter:400,400i,700" rel="stylesheet">
 		<!-- favicons -->
+		<!--  <link rel="icon" href="favicon.ico" type="image/x-icon"> -->
+		<link rel="icon" sizes="150x150" href="favicon.png">
 		<link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
-		<link rel="icon" href="favicon.ico" type="image/x-icon">
 	</head>
 	<body id="js-top">
 
@@ -20,29 +21,29 @@
 			<div class="menu-opener is--visible" id="js-menu-opener"></div>
 			<nav class="menu is--hidden" id="js-menu">
 				<ul class="">
-					<li><h1><a id="js-link" class="menu-link" data-section="js-top">Rita Stilwell</a></h1></li>
-					<li><a class="menu-link" data-section="bio">Bio</a></li>
-					<li><a class="menu-link" data-section="metodologia">Metodologia</a></li>
-					<li><a class="menu-link" data-section="consultas">Consultas</a></li>
-					<li><a class="menu-link" data-section="contactos">Contactos</a></li>	
+					<li><h1><a id="js-link-landing" class="menu-link" data-section="js-top">Rita Stilwell</a></h1></li>
+					<li><a id="js-link-bio" class="menu-link" data-section="bio">Bio</a></li>
+					<li><a id="js-link-metodologia" class="menu-link" data-section="metodologia">Metodologia</a></li>
+					<li><a id="js-link-consultas" class="menu-link" data-section="consultas">Consultas</a></li>
+					<li><a id="js-link-contactos" class="menu-link" data-section="contactos">Contactos</a></li>	
 				</ul>
 			</nav>
 		</header>
 
 		<main role="main">		
 			<!-- Home -->
-			<section class="js-block landing margins-sections-1">
+			<section class="js-block landing margins-sections-1" data-link="js-link-landing">
 				<!-- Morf form -->
 				<svg class="scene" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 		 viewBox="0 0 1074 1019.8" style="enable-background:new 0 0 1074 1019.8;" xml:space="preserve">
 					<path id="js-svg-clip" class="st0" d="M83.5,536.9c0-247.5,174.5-480,422-480s485,229.5,485,477s-185.5,429-433,429S83.5,784.4,83.5,536.9z"/>
 				</svg>
 
-				<h2>Psicóloga e Psicoterapeuta</h2>
+				<h2 class="landing__title">Psicóloga e Psicoterapeuta</h2>
 			</section>
 
 			<!-- Bio -->
-			<section id="bio" class="js-block margins-sections" data-link="#js-first-link">
+			<section id="bio" class="js-block margins-sections" data-link="js-link-bio">
 				<h5 class="">Bio</h5>
 				<h3 class="margin-left-4">Membro da Ordem dos Psicólogos<br>Candidata ao Núcleo Português da Psicanálise</h3>
 
@@ -54,7 +55,7 @@
 			</section>
 
 			<!-- Metodologia -->
-			<section id="metodologia"  class="js-block margins-sections">
+			<section id="metodologia"  class="js-block margins-sections" data-link="js-link-metodologia">
 				<h5 class="">Metodologia</h5>
 				<article>
 					<h3>A psicoterapia da linha dinâmica baseia-se no método psicanalítico. Este método foi fundado por Freud, que descobriu a importância do inconsciente na nossa vida quotidiana e o modo como afectava os nossos comportamentos, sentimentos e motivações.</h3>
@@ -82,7 +83,7 @@
 			</section>
 
 			<!-- Consultas -->
-			<section id="consultas" class="js-block margins-sections">
+			<section id="consultas" class="js-block margins-sections" data-link="js-link-consultas">
 				<h5 class="">Consultas</h5>
 				<h3 class="line">Consulta de Psicologia</h3>
 				<h3 class="line">Avaliação Psicológica</h3>
@@ -91,12 +92,12 @@
 			</section>
 
 	        <!-- Contactos -->	
-	        <section id="contactos" class="js-block contactos">
+	        <section id="contactos" class="js-block contactos" data-link="js-link-contactos">
 	        	<address class="address-box is--visible" id="js-box">
 	        		<a href="mailto:rita.mata.stilwell@gmail.com">rita.mata.stilwell@gmail.com</a><br>
 					<a href="tel:+351939024907">+351 939 024 907</a><br>
-					<a href="" target="_blank">Rua Domingos Sequeira, 27 1o F<br>1300-180 Lisboa</a><br>
-					<a href="">
+					<a href="https://www.google.pt/maps/place/R.+Domingos+Sequeira+27,+1350-122+Lisboa/data=!4m2!3m1!1s0xd1933616eeca0c1:0x7e3d09dda25d4a58?sa=X&ved=0ahUKEwjX7dPk2tXZAhUJtxQKHZXRA-kQ8gEIJzAA" target="_blank">Rua Domingos Sequeira, 27 1o F<br>1300-180 Lisboa</a><br>
+					<a href="#">
 						<svg class="social"
 						xmlns="http://www.w3.org/2000/svg"
 	 					viewBox="0 0 50 50"
@@ -107,7 +108,7 @@
 							</g>
 						</svg>
 					</a>
-					<a href="">
+					<a href="#">
 						<svg class="social"
 						xmlns="http://www.w3.org/2000/svg"
  						viewBox="0 0 50 50"

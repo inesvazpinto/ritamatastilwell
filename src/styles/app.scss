@@ -227,7 +227,8 @@ article {
 }
 
 h2 {
-	position: absolute;
+	//position: absolute;
+	position: static;
 	top: 50%;
 	font-size: 2.2rem;
 	font-weight: 100;
@@ -376,15 +377,33 @@ footer {
 }
 
 /*------------------------------------*\
+    #LANDING CHANGES
+\*------------------------------------*/
+.landing__title {
+	position: sticky;
+}
+
+
+/*------------------------------------*\
     #MEDIA QUERIES
 \*------------------------------------*/
 @media only screen and (max-width:1024px) {
 	.menu.is--hidden {
 		left: -100%;
 	}
+
+	/*------------------------------------*\
+	    #MORPHO CHANGES
+	\*------------------------------------*/
+	.scene {
+		position: absolute;
+		margin: 0px auto;
+		height: 50vh;
+	}
 }
 
 /* target only screen media where browser width is bigger than 640px */
+//converter para rem's
 @media only screen and (min-width: 640px) {
 	.margins-sections {
 		margin-left: 10vw;
@@ -408,9 +427,18 @@ footer {
 	.scene {
 		width:50vw;
 		height: auto;
-		margin: 15vh auto;
+		//margin: 15vh auto;
 		display: block;
 	}
+
+	/*------------------------------------*\
+	    #NAVIGATION
+	\*------------------------------------*/
+	header {
+		background: transparent;
+		padding-top: 0px;
+	}
+
 	.menu {
 		width: auto;
 		background: rgba(252,193,8,0);
@@ -444,6 +472,7 @@ footer {
 			font-weight: 100;
 			color: rgba(255,255,255,.7);
 			display:block;
+			cursor: pointer;
 		}
 	}
 
@@ -488,5 +517,17 @@ footer {
 
 	.social {
 		height: 18px;
+	}
+
+	.close {
+		cursor: pointer;
+	}
+
+	/*------------------------------------*\
+	    #MORPHO CHANGES
+	\*------------------------------------*/
+	.scene {
+		position: absolute;
+		margin: 0px auto;
 	}
 }

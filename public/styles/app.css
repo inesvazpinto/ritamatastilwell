@@ -608,7 +608,7 @@ article {
 }
 
 h2 {
-  position: absolute;
+  position: static;
   top: 50%;
   font-size: 2.2rem;
   font-weight: 100;
@@ -766,12 +766,29 @@ footer p {
   text-align: left;
 }
 
+/*------------------------------------*    #LANDING CHANGES
+\*------------------------------------*/
+
+.landing__title {
+  position: -webkit-sticky;
+  position: sticky;
+}
+
 /*------------------------------------*    #MEDIA QUERIES
 \*------------------------------------*/
 
 @media only screen and (max-width: 1024px) {
   .menu.is--hidden {
     left: -100%;
+  }
+
+  /*------------------------------------*	    #MORPHO CHANGES
+	\*------------------------------------*/
+
+  .scene {
+    position: absolute;
+    margin: 0px auto;
+    height: 50vh;
   }
 }
 
@@ -801,8 +818,15 @@ footer p {
   .scene {
     width: 50vw;
     height: auto;
-    margin: 15vh auto;
     display: block;
+  }
+
+  /*------------------------------------*	    #NAVIGATION
+	\*------------------------------------*/
+
+  header {
+    background: transparent;
+    padding-top: 0px;
   }
 
   .menu {
@@ -831,6 +855,7 @@ footer p {
     font-weight: 100;
     color: rgba(255, 255, 255, 0.7);
     display: block;
+    cursor: pointer;
   }
 
   ul {
@@ -874,6 +899,18 @@ footer p {
 
   .social {
     height: 18px;
+  }
+
+  .close {
+    cursor: pointer;
+  }
+
+  /*------------------------------------*	    #MORPHO CHANGES
+	\*------------------------------------*/
+
+  .scene {
+    position: absolute;
+    margin: 0px auto;
   }
 }
 
