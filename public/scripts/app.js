@@ -127,16 +127,11 @@ navLinks.forEach(function (link) {
     var target = link;
     link.addEventListener('click', function () {
         var _self = this;
-        //remove this;
-        /*navLinks.forEach((active) => {
-            active.classList.remove('is--active');
-        });*/
         Object(__WEBPACK_IMPORTED_MODULE_3__core_scrollToBlock__["a" /* default */])(_self);
         Object(__WEBPACK_IMPORTED_MODULE_1__core_toggleMenu__["a" /* default */])(hamburguerBtn, menu);
     }, false);
 });
 
-//if (!isMobile()) 
 Object(__WEBPACK_IMPORTED_MODULE_2__core_scrollPos__["a" /* default */])(blocks, navLinks);
 
 Object(__WEBPACK_IMPORTED_MODULE_4__core_morphingSVG__["a" /* default */])(svgPath);

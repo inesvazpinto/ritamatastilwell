@@ -39,17 +39,12 @@ navLinks.forEach((link) => {
     var target = link;
     link.addEventListener('click', function() {
         let _self = this;
-        //remove this;
-        /*navLinks.forEach((active) => {
-            active.classList.remove('is--active');
-        });*/
         scrollToBlock(_self);
         toggleMenu(hamburguerBtn, menu);
     }, false);
 });
 
-//if (!isMobile()) 
-    scrollPos(blocks, navLinks);
+scrollPos(blocks, navLinks);
 
 morphingSVG(svgPath);
 
