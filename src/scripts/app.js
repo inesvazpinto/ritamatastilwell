@@ -6,7 +6,7 @@ import toggleMenu from './core/toggleMenu';
 
 import scrollPos from './core/scrollPos';
 
-import scrollNavigation from './core/scrollNavigation';
+import scrollToBlock from './core/scrollToBlock';
 
 import morphingSVG from './core/morphingSVG';
 
@@ -35,7 +35,7 @@ hamburguerBtn.addEventListener('click', function() {
 
 navLinks.forEach((link) => {
     link.addEventListener('click', function() {
-        scrollNavigation(this);
+        scrollToBlock(this);
         toggleMenu(hamburguerBtn, menu);
     }, false);
 });

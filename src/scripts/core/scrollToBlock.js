@@ -15,11 +15,11 @@ const scrollToSection = (el) => {
     })
 };
 
-const scrollNavigation = (el) => {
+const scrollToBlock = (el) => {
     let anchorSection = el.dataset.section; 
     scrollToSection(document.getElementById(anchorSection));
     el.classList.add('is--active');
 };
 
 
-export default scrollNavigation;
+export default scrollToBlock;
