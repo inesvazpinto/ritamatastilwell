@@ -74,7 +74,7 @@ header {
 	height: .3rem;
 	width: 25px;
 	background: white;
-	z-index: 3;
+	z-index: 9;
 }
 
 .menu-opener::before, .menu-opener::after {
@@ -91,26 +91,6 @@ header {
 
 .menu-opener::after {
 	transform: translateY(.4rem);
-}
-
-.menu-opener.active {
-  background: transparent;
-}
-
-.menu-opener.active::before {
-  transform: translateY(0rem) rotate(-45deg);
-}
-
-.menu-opener.active::after {
-  transform: translateY(-0.3rem) translateX(0rem) rotate(45deg);
-}
-
-.menu-opener.is--visible {
-	display: block;
-}
-
-.menu-opener.is--hidden {
-	display: none;
 }
 
 .section-title {
@@ -132,14 +112,6 @@ header {
     margin-bottom: 9px;
     background: white;
     transition: width .3s;
-}
-
-.section-title.is--visible {
-	display: block;
-}
-
-.section-title.is--hidden {
-	display: none;
 }
 
 .menu-link::before {
@@ -226,6 +198,7 @@ article {
 	margin: 0 20px 20px 20px;
 }
 
+//changes
 h2 {
 	//position: absolute;
 	position: static;
@@ -314,11 +287,6 @@ p {
 	align-itens: center;
 }
 
-#map {
-	height: 100vh;
-	width: 100%;
-	z-index: -9999999;
-}
 
 /*------------------------------------*\
     #CONTACTS BOX
@@ -376,9 +344,7 @@ footer {
 	}
 }
 
-/*------------------------------------*\
-    #LANDING CHANGES
-\*------------------------------------*/
+//changes
 .landing__title {
 	position: sticky;
 }
@@ -387,18 +353,44 @@ footer {
 /*------------------------------------*\
     #MEDIA QUERIES
 \*------------------------------------*/
-@media only screen and (max-width:1024px) {
+@media only screen and (max-width:63rem) {
 	.menu.is--hidden {
 		left: -100%;
 	}
 
-	/*------------------------------------*\
-	    #MORPHO CHANGES
-	\*------------------------------------*/
+	//changes
 	.scene {
 		position: absolute;
 		margin: 0px auto;
 		height: 50vh;
+	}
+
+	.section-title.is--visible {
+		display: block;
+	}
+
+	.section-title.is--hidden {
+		display: none;
+	}
+
+	.menu-opener.is--active {
+	  background: transparent;
+	}
+
+	.menu-opener.is--active::before {
+	  transform: translateY(0rem) rotate(-45deg);
+	}
+
+	.menu-opener.is--active::after {
+	  transform: translateY(-0.3rem) translateX(0rem) rotate(45deg);
+	}
+
+	.menu-opener.is--visible {
+		display: block;
+	}
+
+	.menu-opener.is--hidden {
+		display: none;
 	}
 }
 
@@ -424,11 +416,20 @@ footer {
 
 /* target media where browser width is bigger than 1024px */
 @media only screen and (min-width: 64rem) {
+	
+	//changes
+	.section-title {
+		display: none;
+	}
+
+	//changes
 	.scene {
 		width:50vw;
 		height: auto;
 		//margin: 15vh auto;
 		display: block;
+		position: absolute;
+		margin: 0px auto;
 	}
 
 	/*------------------------------------*\
@@ -437,6 +438,11 @@ footer {
 	header {
 		background: transparent;
 		padding-top: 0px;
+	}
+
+	//changes
+	.menu-opener {
+		display: none;
 	}
 
 	.menu {
@@ -519,15 +525,8 @@ footer {
 		height: 18px;
 	}
 
+	//changes
 	.close {
 		cursor: pointer;
-	}
-
-	/*------------------------------------*\
-	    #MORPHO CHANGES
-	\*------------------------------------*/
-	.scene {
-		position: absolute;
-		margin: 0px auto;
 	}
 }

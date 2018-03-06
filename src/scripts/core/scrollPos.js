@@ -18,13 +18,19 @@ const scrollPos = (blocks, links) => {
     blocks.forEach(function(block) {
         let thisLink = document.getElementById(block.dataset.link);
         let offsetBlock = block.getBoundingClientRect();
+        
         let offsetBlockBottom = offsetBlock.y + offsetBlock.height;
+        
         window.addEventListener('scroll', _debounce(function() {
             let winHeight = window.pageYOffset + 120;
-            (winHeight >=  offsetBlock.y && winHeight <= offsetBlockBottom) ? thisLink.classList.add('is--active') : thisLink.classList.remove('is--active');
-        }, 200));
+            
+            if (winHeight >=  offsetBlock.y && winHeight <= offsetBlockBottom) {
+                thisLink.classList.add('is--active')
+            } else {
+                thisLink.classList.remove('is--active');
+            }
+        }, 0));
     });
-
 };
 
 export default scrollPos;

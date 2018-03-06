@@ -1,20 +1,17 @@
 import mapStyles from './mapStyles';
 
-class Map {
-    
-    constructor() {
-    }
+const map = (() => {
 
-    init(el, infobox, lat, lng) {
-        let map = new google.maps.Map(document.getElementById(el), {
+    const init = (el, infobox, thisLat, thisLng) => {
+        let map = new google.maps.Map(el, {
             styles: mapStyles,
-            center: {lat: lat, lng: lng},
+            center: {lat: thisLat, lng: thisLng},
             zoom: 15,
             disableDefaultUI: true
         });
 
         let marker = new google.maps.Marker({
-            position: {lat: lat, lng: lng},
+            position: {lat: thisLat, lng: thisLng},
             map: map,
             title: 'Rita Mata Stilwell',
             icon: {
@@ -23,21 +20,24 @@ class Map {
             }  
         });
 
-        marker.addListener('click', function() {
-            infobox.classList.add('is--visible');
-            infobox.classList.remove('is--hidden');
-        });
-    }
+        marker.addListener('click', () => toggleBox(infobox));
+    };
 
-    toogleBox(el) {
-        if(el.classList.contains('is--visible')) {
+    const toggleBox = (el) => {
+        if (el.classList.contains('is--visible')) {
             el.classList.remove('is--visible');
             el.classList.add('is--hidden');
         } else {
             el.classList.add('is--visible');
             el.classList.remove('is--hidden');
         }
-    }
-}
+    };
 
-export default Map;
+    return {
+        init: init,
+        toggleBox: toggleBox
+    }
+
+})();
+
+export default map;

@@ -13,23 +13,13 @@ const scrollToSection = (el) => {
         easing: 'easeInOutExpo',
         update: () => window.scroll(0, scroll.y)
     })
-}
+};
 
-const navigate = (el) => {
-    el.addEventListener('click', () => {
-        let anchorSection = el.dataset.section; 
-        scrollToSection(document.getElementById(anchorSection));
-        //menu.classList.add('is--hidden');
-        //menu.classList.remove('is--visible');
-        //hamburguerBtn.classList.toggle('active');
-        el.classList.add('is--active');
-    }, false);
-}
+const scrollNavigation = (el) => {
+    let anchorSection = el.dataset.section; 
+    scrollToSection(document.getElementById(anchorSection));
+    el.classList.add('is--active');
+};
 
-const scrollNavigation = (navLinks) => {
-    navLinks.forEach((link) => {
-        navigate(link);
-    });
-}
 
 export default scrollNavigation;

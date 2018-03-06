@@ -68,7 +68,7 @@
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(1);
-module.exports = __webpack_require__(4);
+module.exports = __webpack_require__(9);
 
 
 /***/ }),
@@ -79,10 +79,11 @@ module.exports = __webpack_require__(4);
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_animejs__ = __webpack_require__(2);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_animejs___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_animejs__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__core_scrollPos__ = __webpack_require__(9);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__core_scrollNavigation__ = __webpack_require__(10);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__core_morphingSVG__ = __webpack_require__(11);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__core_Map__ = __webpack_require__(16);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__core_toggleMenu__ = __webpack_require__(14);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__core_scrollPos__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__core_scrollNavigation__ = __webpack_require__(5);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__core_morphingSVG__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__core_Map__ = __webpack_require__(7);
 
 
 window.anime = __WEBPACK_IMPORTED_MODULE_0_animejs___default.a;
@@ -93,75 +94,47 @@ window.anime = __WEBPACK_IMPORTED_MODULE_0_animejs___default.a;
 
 
 
-//work here
-//import toogleBox from './core/toogleBox';
 
 
 
-var isMobile = function isMobile() {
-    return window.matchMedia("(max-width: 64rem)").matches;
-};
 
 var blocks = document.querySelectorAll('.js-block');
-var links = document.querySelectorAll('.menu-link');
-Object(__WEBPACK_IMPORTED_MODULE_1__core_scrollPos__["a" /* default */])(blocks, links);
 
-var navLinks = document.querySelectorAll('.menu-link');
-Object(__WEBPACK_IMPORTED_MODULE_2__core_scrollNavigation__["a" /* default */])(navLinks);
-
-Object(__WEBPACK_IMPORTED_MODULE_3__core_morphingSVG__["a" /* default */])(document.getElementById('js-svg-clip'));
-
-var infobox = document.getElementById('js-box');
-var closeInfox = document.getElementById('js-close');
-
-var map = new __WEBPACK_IMPORTED_MODULE_4__core_Map__["a" /* default */]();
-map.init('js-map-2', infobox, 38.715021, -9.163152);
-
-closeInfox.addEventListener('click', function () {
-    map.toogleBox(infobox);
-});
-
-/*------------------------------------*\
-    #MENU
-\*------------------------------------*/
 var menu = document.getElementById('js-menu');
-var title = document.getElementById('js-title');
+
 var hamburguerBtn = document.getElementById('js-menu-opener');
 
-/**
- * check if is mobile device based on media queries
- */
+var navLinks = document.querySelectorAll('.menu-link');
 
-if (!isMobile()) {
-    // for desktop:
-    title.classList.remove('is--visible');
-    title.classList.add('is--hidden');
-    hamburguerBtn.classList.add('is--hidden');
-    hamburguerBtn.classList.remove('is--visible');
-} else {
-    // for mobile:
-    menu.classList.add('is--hidden');
-    menu.classList.remove('is--visible');
-    title.classList.add('is--visible');
-    title.classList.remove('is--hidden');
-}
+var svgPath = document.getElementById('js-svg-clip');
 
-// OPEN MENU BTN //
+var mapEl = document.getElementById('js-map-2');
+
+var infobox = document.getElementById('js-box');
+
+var closeInfoxBtn = document.getElementById('js-close');
+
 hamburguerBtn.addEventListener('click', function () {
-    if (menu.classList.contains('is--hidden')) {
-        menu.classList.remove('is--hidden');
-        menu.classList.add('is--visible');
-    } else {
-        menu.classList.add('is--hidden');
-        menu.classList.remove('is--visible');
-    }
+    var _self = this;
+    Object(__WEBPACK_IMPORTED_MODULE_1__core_toggleMenu__["a" /* default */])(_self, menu);
 });
 
-// CLOSE MENU BTN //
-hamburguerBtn.addEventListener('click', function () {
-    menu.classList.toggle('active');
-    hamburguerBtn.classList.toggle('active');
-}, false);
+navLinks.forEach(function (link) {
+    link.addEventListener('click', function () {
+        Object(__WEBPACK_IMPORTED_MODULE_3__core_scrollNavigation__["a" /* default */])(this);
+        Object(__WEBPACK_IMPORTED_MODULE_1__core_toggleMenu__["a" /* default */])(hamburguerBtn, menu);
+    }, false);
+});
+
+Object(__WEBPACK_IMPORTED_MODULE_2__core_scrollPos__["a" /* default */])(blocks, navLinks);
+
+Object(__WEBPACK_IMPORTED_MODULE_4__core_morphingSVG__["a" /* default */])(svgPath);
+
+__WEBPACK_IMPORTED_MODULE_5__core_Map__["a" /* default */].init(mapEl, infobox, 38.715021, -9.163152);
+
+closeInfoxBtn.addEventListener('click', function () {
+    return __WEBPACK_IMPORTED_MODULE_5__core_Map__["a" /* default */].toggleBox(infobox);
+});
 
 /***/ }),
 /* 2 */
@@ -234,16 +207,6 @@ module.exports = g;
 
 /***/ }),
 /* 4 */
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
-
-/***/ }),
-/* 5 */,
-/* 6 */,
-/* 7 */,
-/* 8 */,
-/* 9 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -268,18 +231,25 @@ var scrollPos = function scrollPos(blocks, links) {
     blocks.forEach(function (block) {
         var thisLink = document.getElementById(block.dataset.link);
         var offsetBlock = block.getBoundingClientRect();
+
         var offsetBlockBottom = offsetBlock.y + offsetBlock.height;
+
         window.addEventListener('scroll', _debounce(function () {
             var winHeight = window.pageYOffset + 120;
-            winHeight >= offsetBlock.y && winHeight <= offsetBlockBottom ? thisLink.classList.add('is--active') : thisLink.classList.remove('is--active');
-        }, 200));
+
+            if (winHeight >= offsetBlock.y && winHeight <= offsetBlockBottom) {
+                thisLink.classList.add('is--active');
+            } else {
+                thisLink.classList.remove('is--active');
+            }
+        }, 0));
     });
 };
 
 /* harmony default export */ __webpack_exports__["a"] = (scrollPos);
 
 /***/ }),
-/* 10 */
+/* 5 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -304,27 +274,16 @@ var scrollToSection = function scrollToSection(el) {
     });
 };
 
-var navigate = function navigate(el) {
-    el.addEventListener('click', function () {
-        var anchorSection = el.dataset.section;
-        scrollToSection(document.getElementById(anchorSection));
-        //menu.classList.add('is--hidden');
-        //menu.classList.remove('is--visible');
-        //hamburguerBtn.classList.toggle('active');
-        el.classList.add('is--active');
-    }, false);
-};
-
-var scrollNavigation = function scrollNavigation(navLinks) {
-    navLinks.forEach(function (link) {
-        navigate(link);
-    });
+var scrollNavigation = function scrollNavigation(el) {
+    var anchorSection = el.dataset.section;
+    scrollToSection(document.getElementById(anchorSection));
+    el.classList.add('is--active');
 };
 
 /* harmony default export */ __webpack_exports__["a"] = (scrollNavigation);
 
 /***/ }),
-/* 11 */
+/* 6 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -342,9 +301,58 @@ var morphingSVG = function morphingSVG(svgPath) {
 /* harmony default export */ __webpack_exports__["a"] = (morphingSVG);
 
 /***/ }),
-/* 12 */,
-/* 13 */,
-/* 14 */
+/* 7 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__mapStyles__ = __webpack_require__(8);
+
+
+var map = function () {
+
+    var init = function init(el, infobox, thisLat, thisLng) {
+        var map = new google.maps.Map(el, {
+            styles: __WEBPACK_IMPORTED_MODULE_0__mapStyles__["a" /* default */],
+            center: { lat: thisLat, lng: thisLng },
+            zoom: 15,
+            disableDefaultUI: true
+        });
+
+        var marker = new google.maps.Marker({
+            position: { lat: thisLat, lng: thisLng },
+            map: map,
+            title: 'Rita Mata Stilwell',
+            icon: {
+                url: "/images/marker.svg",
+                scaledSize: new google.maps.Size(64, 64)
+            }
+        });
+
+        marker.addListener('click', function () {
+            return toggleBox(infobox);
+        });
+    };
+
+    var toggleBox = function toggleBox(el) {
+        if (el.classList.contains('is--visible')) {
+            el.classList.remove('is--visible');
+            el.classList.add('is--hidden');
+        } else {
+            el.classList.add('is--visible');
+            el.classList.remove('is--hidden');
+        }
+    };
+
+    return {
+        init: init,
+        toggleBox: toggleBox
+    };
+}();
+
+/* harmony default export */ __webpack_exports__["a"] = (map);
+
+/***/ }),
+/* 8 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -480,65 +488,33 @@ var mapStyles = [{
 /* harmony default export */ __webpack_exports__["a"] = (mapStyles);
 
 /***/ }),
-/* 15 */,
-/* 16 */
+/* 9 */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 10 */,
+/* 11 */,
+/* 12 */,
+/* 13 */,
+/* 14 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__mapStyles__ = __webpack_require__(14);
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+var toggleMenu = function toggleMenu(self, menu) {
+    self.classList.toggle('is--active');
 
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-
-
-var Map = function () {
-    function Map() {
-        _classCallCheck(this, Map);
+    if (menu.classList.contains('is--hidden')) {
+        menu.classList.remove('is--hidden');
+        menu.classList.add('is--visible');
+    } else {
+        menu.classList.add('is--hidden');
+        menu.classList.remove('is--visible');
     }
+};
 
-    _createClass(Map, [{
-        key: 'init',
-        value: function init(el, infobox, lat, lng) {
-            var map = new google.maps.Map(document.getElementById(el), {
-                styles: __WEBPACK_IMPORTED_MODULE_0__mapStyles__["a" /* default */],
-                center: { lat: lat, lng: lng },
-                zoom: 15,
-                disableDefaultUI: true
-            });
-
-            var marker = new google.maps.Marker({
-                position: { lat: lat, lng: lng },
-                map: map,
-                title: 'Rita Mata Stilwell',
-                icon: {
-                    url: "/images/marker.svg",
-                    scaledSize: new google.maps.Size(64, 64)
-                }
-            });
-
-            marker.addListener('click', function () {
-                infobox.classList.add('is--visible');
-                infobox.classList.remove('is--hidden');
-            });
-        }
-    }, {
-        key: 'toogleBox',
-        value: function toogleBox(el) {
-            if (el.classList.contains('is--visible')) {
-                el.classList.remove('is--visible');
-                el.classList.add('is--hidden');
-            } else {
-                el.classList.add('is--visible');
-                el.classList.remove('is--hidden');
-            }
-        }
-    }]);
-
-    return Map;
-}();
-
-/* harmony default export */ __webpack_exports__["a"] = (Map);
+/* harmony default export */ __webpack_exports__["a"] = (toggleMenu);
 
 /***/ })
 /******/ ]);
