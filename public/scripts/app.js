@@ -124,10 +124,8 @@ hamburguerBtn.addEventListener('click', function () {
 });
 
 navLinks.forEach(function (link) {
-    var target = link;
     link.addEventListener('click', function () {
-        var _self = this;
-        Object(__WEBPACK_IMPORTED_MODULE_3__core_scrollToBlock__["a" /* default */])(_self);
+        Object(__WEBPACK_IMPORTED_MODULE_3__core_scrollToBlock__["a" /* default */])(this);
         Object(__WEBPACK_IMPORTED_MODULE_1__core_toggleMenu__["a" /* default */])(hamburguerBtn, menu);
     }, false);
 });

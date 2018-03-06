@@ -36,10 +36,8 @@ hamburguerBtn.addEventListener('click', function() {
 });
 
 navLinks.forEach((link) => {
-    var target = link;
     link.addEventListener('click', function() {
-        let _self = this;
-        scrollToBlock(_self);
+        scrollToBlock(this);
         toggleMenu(hamburguerBtn, menu);
     }, false);
 });
