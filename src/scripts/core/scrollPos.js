@@ -14,23 +14,23 @@ function _debounce(func, wait, immediate) {
     };
 };
 
+
 const scrollPos = (blocks, links) => {
-    blocks.forEach(function(block) {
-        let thisLink = document.getElementById(block.dataset.link);
-        let offsetBlock = block.getBoundingClientRect();
-        
-        let offsetBlockBottom = offsetBlock.y + offsetBlock.height;
-        
-        window.addEventListener('scroll', _debounce(function() {
-            let winHeight = window.pageYOffset + 120;
+    let winHeight = window.pageYOffset + 120;
+
+    window.addEventListener('scroll', _debounce(function() {
+        blocks.forEach(function(block) {
+            let thisLink = document.getElementById(block.dataset.link);
+            let offsetBlock = block.getBoundingClientRect();
+            let offsetBlockBottom = offsetBlock.y + offsetBlock.height;
             
             if (winHeight >=  offsetBlock.y && winHeight <= offsetBlockBottom) {
-                thisLink.classList.add('is--active')
+                thisLink.classList.add('is--active');
             } else {
                 thisLink.classList.remove('is--active');
             }
-        }, 0));
-    });
+        });
+    }, 200));
 };
 
 export default scrollPos;

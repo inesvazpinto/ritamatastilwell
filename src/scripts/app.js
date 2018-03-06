@@ -12,6 +12,8 @@ import morphingSVG from './core/morphingSVG';
 
 import map from './core/Map';
 
+const isMobile = () => window.matchMedia('(max-width: 64rem)').matches;
+
 const blocks = document.querySelectorAll('.js-block');
 
 const menu =  document.getElementById('js-menu');
@@ -34,13 +36,20 @@ hamburguerBtn.addEventListener('click', function() {
 });
 
 navLinks.forEach((link) => {
+    var target = link;
     link.addEventListener('click', function() {
-        scrollToBlock(this);
+        let _self = this;
+        //remove this;
+        /*navLinks.forEach((active) => {
+            active.classList.remove('is--active');
+        });*/
+        scrollToBlock(_self);
         toggleMenu(hamburguerBtn, menu);
     }, false);
 });
 
-scrollPos(blocks, navLinks);
+//if (!isMobile()) 
+    scrollPos(blocks, navLinks);
 
 morphingSVG(svgPath);
 

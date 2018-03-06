@@ -21,5 +21,4 @@ const scrollToBlock = (el) => {
     el.classList.add('is--active');
 };
 
-
 export default scrollToBlock;

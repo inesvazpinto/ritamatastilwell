@@ -747,6 +747,9 @@ footer p {
     position: absolute;
     margin: 0px auto;
     height: 50vh;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+            transform: translateY(-50%);
   }
 
   .section-title.is--visible {
