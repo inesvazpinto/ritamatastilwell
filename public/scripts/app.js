@@ -94,28 +94,17 @@ window.anime = __WEBPACK_IMPORTED_MODULE_0_animejs___default.a;
 
 
 
-
-
-
-
 var isMobile = function isMobile() {
     return window.matchMedia('(max-width: 64rem)').matches;
 };
 
 var blocks = document.querySelectorAll('.js-block');
-
 var menu = document.getElementById('js-menu');
-
 var hamburguerBtn = document.getElementById('js-menu-opener');
-
 var navLinks = document.querySelectorAll('.menu-link');
-
 var svgPath = document.getElementById('js-svg-clip');
-
 var mapEl = document.getElementById('js-map-2');
-
 var infobox = document.getElementById('js-box');
-
 var closeInfoxBtn = document.getElementById('js-close');
 
 hamburguerBtn.addEventListener('click', function () {
