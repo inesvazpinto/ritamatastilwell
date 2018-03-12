@@ -32,9 +32,9 @@ App.init = (($, window, document, undefined) => {
 
 		$(navLinks).on('click', function() {
 			navLinks.removeClass('is--active');
-		    scrollToBlock(this);
-		    toggleMenu(hamburguerBtn, menu);
-		    return false;
+			scrollToBlock(this);
+			toggleMenu(hamburguerBtn, menu);
+			return false;
 		});
 
 		scrollPos(blocks, navLinks);
