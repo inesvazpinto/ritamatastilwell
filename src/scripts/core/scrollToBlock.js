@@ -1,6 +1,6 @@
 const scrollToSection = (el) => {
     let {top} = el.getBoundingClientRect();
-    let mainHeaderHeight = document.getElementById('js-main-header').scrollHeight;
+    let mainHeaderHeight = document.getElementById('js-main-header').scrollHeight + 20;
   
     const scroll = {
         y: window.pageYOffset

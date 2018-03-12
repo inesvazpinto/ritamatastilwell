@@ -14,20 +14,18 @@ function _debounce(func, wait, immediate) {
     };
 };
 
+const scrollPos = (sections, navLinks) => {
+    $(window).on('scroll', _debounce(function() {
+        let curr_pos = $(this).scrollTop();
 
-const scrollPos = (blocks, links) => {
-    let winHeight = window.pageYOffset + 120;
+        sections.each(function() {
+            let top = $(this).offset().top - 120;
+            let bottom = top + $(this).outerHeight();
+            let thisLink = $(this).data('link');
 
-    window.addEventListener('scroll', _debounce(function() {
-        blocks.forEach(function(block) {
-            let thisLink = document.getElementById(block.dataset.link);
-            let offsetBlock = block.getBoundingClientRect();
-            let offsetBlockBottom = offsetBlock.y + offsetBlock.height;
-            
-            if (winHeight >=  offsetBlock.y && winHeight <= offsetBlockBottom) {
-                thisLink.classList.add('is--active');
-            } else {
-                thisLink.classList.remove('is--active');
+            if (curr_pos >= top && curr_pos <= bottom) {
+                navLinks.removeClass('is--active');
+                $('#' + thisLink).addClass('is--active');
             }
         });
     }, 200));
