@@ -15,7 +15,7 @@ const map = (() => {
             map: map,
             title: 'Rita Mata Stilwell',
             icon: {
-                url: "/images/marker.svg",
+                url: "images/marker.svg",
                 scaledSize: new google.maps.Size(64, 64)
             }  
         });

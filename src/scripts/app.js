@@ -24,16 +24,17 @@ App.init = (($, window, document, undefined) => {
 	const closeInfoxBtn = document.getElementById('js-close');
 
 	const main = () => {
+
 		hamburguerBtn.addEventListener('click', function() {
-    		let _self = this;
-    		toggleMenu(_self, menu); 
+			let _self = this;
+			toggleMenu(_self, menu); 
 		});
 
 		$(navLinks).on('click', function() {
 			navLinks.removeClass('is--active');
 		    scrollToBlock(this);
 		    toggleMenu(hamburguerBtn, menu);
-			return false;
+		    return false;
 		});
 
 		scrollPos(blocks, navLinks);

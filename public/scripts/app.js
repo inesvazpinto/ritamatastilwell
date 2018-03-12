@@ -112,6 +112,7 @@ App.init = function ($, window, document, undefined) {
 	var closeInfoxBtn = document.getElementById('js-close');
 
 	var main = function main() {
+
 		hamburguerBtn.addEventListener('click', function () {
 			var _self = this;
 			Object(__WEBPACK_IMPORTED_MODULE_2__core_toggleMenu__["a" /* default */])(_self, menu);
@@ -346,7 +347,7 @@ var map = function () {
             map: map,
             title: 'Rita Mata Stilwell',
             icon: {
-                url: "/images/marker.svg",
+                url: "images/marker.svg",
                 scaledSize: new google.maps.Size(64, 64)
             }
         });
