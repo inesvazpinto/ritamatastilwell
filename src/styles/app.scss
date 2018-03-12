@@ -74,7 +74,7 @@ header {
 	height: .3rem;
 	width: 25px;
 	background: white;
-	z-index: 3;
+	z-index: 9;
 }
 
 .menu-opener::before, .menu-opener::after {
@@ -91,26 +91,6 @@ header {
 
 .menu-opener::after {
 	transform: translateY(.4rem);
-}
-
-.menu-opener.active {
-  background: transparent;
-}
-
-.menu-opener.active::before {
-  transform: translateY(0rem) rotate(-45deg);
-}
-
-.menu-opener.active::after {
-  transform: translateY(-0.3rem) translateX(0rem) rotate(45deg);
-}
-
-.menu-opener.is--visible {
-	display: block;
-}
-
-.menu-opener.is--hidden {
-	display: none;
 }
 
 .section-title {
@@ -132,14 +112,6 @@ header {
     margin-bottom: 9px;
     background: white;
     transition: width .3s;
-}
-
-.section-title.is--visible {
-	display: block;
-}
-
-.section-title.is--hidden {
-	display: none;
 }
 
 .menu-link::before {
@@ -226,8 +198,10 @@ article {
 	margin: 0 20px 20px 20px;
 }
 
+//changes
 h2 {
-	position: absolute;
+	//position: absolute;
+	position: static;
 	top: 50%;
 	font-size: 2.2rem;
 	font-weight: 100;
@@ -313,11 +287,6 @@ p {
 	align-itens: center;
 }
 
-#map {
-	height: 100vh;
-	width: 100%;
-	z-index: -9999999;
-}
 
 /*------------------------------------*\
     #CONTACTS BOX
@@ -375,16 +344,60 @@ footer {
 	}
 }
 
+//changes
+.landing__title {
+	position: sticky;
+}
+
+
 /*------------------------------------*\
     #MEDIA QUERIES
 \*------------------------------------*/
-@media only screen and (max-width:1024px) {
+@media only screen and (max-width:63rem) {
 	.menu.is--hidden {
 		left: -100%;
+	}
+
+	//changes
+	.scene {
+		position: absolute;
+		margin: 0px auto;
+		height: 50vh;
+		top: 50%;
+		transform: translateY(-50%);
+	}
+
+	.section-title.is--visible {
+		display: block;
+	}
+
+	.section-title.is--hidden {
+		display: none;
+	}
+
+	.menu-opener.is--active {
+	  background: transparent;
+	}
+
+	.menu-opener.is--active::before {
+	  transform: translateY(0rem) rotate(-45deg);
+	}
+
+	.menu-opener.is--active::after {
+	  transform: translateY(-0.3rem) translateX(0rem) rotate(45deg);
+	}
+
+	.menu-opener.is--visible {
+		display: block;
+	}
+
+	.menu-opener.is--hidden {
+		display: none;
 	}
 }
 
 /* target only screen media where browser width is bigger than 640px */
+//converter para rem's
 @media only screen and (min-width: 640px) {
 	.margins-sections {
 		margin-left: 10vw;
@@ -405,12 +418,35 @@ footer {
 
 /* target media where browser width is bigger than 1024px */
 @media only screen and (min-width: 64rem) {
+	
+	//changes
+	.section-title {
+		display: none;
+	}
+
+	//changes
 	.scene {
 		width:50vw;
 		height: auto;
-		margin: 15vh auto;
+		//margin: 15vh auto;
 		display: block;
+		position: absolute;
+		margin: 0px auto;
 	}
+
+	/*------------------------------------*\
+	    #NAVIGATION
+	\*------------------------------------*/
+	header {
+		background: transparent;
+		padding-top: 0px;
+	}
+
+	//changes
+	.menu-opener {
+		display: none;
+	}
+
 	.menu {
 		width: auto;
 		background: rgba(252,193,8,0);
@@ -444,6 +480,7 @@ footer {
 			font-weight: 100;
 			color: rgba(255,255,255,.7);
 			display:block;
+			cursor: pointer;
 		}
 	}
 
@@ -488,5 +525,10 @@ footer {
 
 	.social {
 		height: 18px;
+	}
+
+	//changes
+	.close {
+		cursor: pointer;
 	}
 }
